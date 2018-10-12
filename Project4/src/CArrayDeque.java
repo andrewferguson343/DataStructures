@@ -8,8 +8,8 @@ public class CArrayDeque<T> {
 	
 	// Default constructor
 	public  CArrayDeque() {
-	  front = CAPACITY - 1;
-	  back = 0;
+	  front = 0;
+	  back = CAPACITY - 1;
 		size = 0;
 		items = (T[]) new Object[CAPACITY];
 	}
@@ -45,10 +45,17 @@ public class CArrayDeque<T> {
     @param newEntry  The object to be added as a new entry.
     @return  True if the addition is successful, or false if not. */	
 	public boolean addBack(T newEntry) {
-		if(size < 10 && front >= back)
+		if(size < CAPACITY)
 		{
-		  items[back] = newEntry;
-		  back++;
+      if(back == CAPACITY -1)
+      {
+        back = 0;
+      }
+      else
+      {
+        back++;
+      }
+		  items[back] = newEntry;		  
 		  size++;
 		}
 		return false;
@@ -72,9 +79,16 @@ public class CArrayDeque<T> {
     @return True if the removal was successful, or false if not. */
 	public boolean removeBack() {
 		items[back] = null;
-		back--;
-		size--;
-		return false;
+		if(back == 0)
+      {
+        back = CAPACITY - 1;
+      }
+      else
+      {
+        back--;
+      }
+	  	size--;
+	  	return false;
 	}
 	
 	/** Retrieve the entry at front in the queue, if possible.
@@ -90,17 +104,15 @@ public class CArrayDeque<T> {
     @return the front entry if the retrieve was successful, or null if not. */
 	public T retrieveBack() {
 		if (size > 0)
-    {
-      return items[back];
-    }
-		return null;		
+    {    
+      return items[back];    	
 	}
 	
 	/** Retrieves all entries that are in this queue.
     @return  A newly allocated array of all the entries in this queue. */
 	public T[] toArray(){
 	  T[] temp = (T[]) new Object[CAPACITY];
-	  for (int i = 0; i < items.length; i++)
+	  for (int i = 0; i < temp.length; i++)
 	  {
 	    temp[i] = items[i];
 	  }
