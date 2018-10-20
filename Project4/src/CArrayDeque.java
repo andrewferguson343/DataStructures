@@ -1,5 +1,5 @@
 public class CArrayDeque<T> {
-  
+
   private T[] items;
   private int front;
   private int back;
@@ -50,11 +50,13 @@ public class CArrayDeque<T> {
   
   /** Adds a new entry to this queue at back.
     @param newEntry  The object to be added as a new entry.
+ project4
     @return  True if the addition is successful, or false if not. */  
   public boolean addBack(T newEntry) {
     if(size < CAPACITY)
     {
       if(back == CAPACITY - 1)
+
       {
         back = 0;
       }
@@ -62,6 +64,7 @@ public class CArrayDeque<T> {
       {
         back++;
       }
+
       items[back] = newEntry;     
       size++;
     }
@@ -69,6 +72,7 @@ public class CArrayDeque<T> {
   }
   
   /** Removes the entry at front from the queue, if possible.
+
     @return True if the removal was successful, or false if not. */
   public boolean removeFront() {
     if(size > 0)
@@ -92,9 +96,11 @@ public class CArrayDeque<T> {
   
   /** Removes the entry at back from the queue, if possible.
     @return True if the removal was successful, or false if not. */
+
   public boolean removeBack() {
     items[back] = null;
     if(back == 0)
+
       {
         back = CAPACITY - 1;
       }
@@ -102,11 +108,19 @@ public class CArrayDeque<T> {
       {
         back--;
       }
+
       size--;
       return false;
   }
   
   /** Retrieve the entry at front in the queue, if possible.
+
+	  	size--;
+	  	return false;
+	}
+	
+	/** Retrieve the entry at front in the queue, if possible.
+
     @return the front entry if the retrieve was successful, or null if not. */
   public T retrieveFront() {    
       if(size > 0) {
@@ -117,6 +131,7 @@ public class CArrayDeque<T> {
 
   /** Retrieve the entry at back in the queue, if possible.
     @return the front entry if the retrieve was successful, or null if not. */
+
   public T retrieveBack() {
     if (size > 0)
     {    
